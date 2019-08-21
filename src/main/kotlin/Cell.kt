@@ -1,4 +1,4 @@
-class Cell(var alive: Boolean = false) {
+class Cell(var alive: Boolean = false, var index: Int) {
     /**
      * List with all neighbours available for our cell
      */
@@ -8,8 +8,10 @@ class Cell(var alive: Boolean = false) {
         alive = when (aliveNeighbours) {
             // Dies of solitude
             0, 1 -> false
-            // Keeps on living
-            2, 3 -> true
+            // Survives with 2 neighbours
+            2 -> this.alive
+            // Either continue to exist or become alive
+            3 -> true
             // Dies of overpopulation
             else -> false
         }
