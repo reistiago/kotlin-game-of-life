@@ -1,7 +1,7 @@
 import java.lang.StringBuilder
 
 class Universe(private val size: Int = 10) {
-    private val cells = Array(size * size) { Cell() }
+    private val cells = Array(size * size) { Cell(index = it) }
 
     /**
      * Init alive cells in the universe
@@ -43,7 +43,7 @@ class Universe(private val size: Int = 10) {
     }
 
     private fun Pair<Int, Int>.index(): Int {
-        return this.first * size + this.second
+        return this.second * size + this.first
     }
 
     /**
